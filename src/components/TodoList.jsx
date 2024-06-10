@@ -1,12 +1,16 @@
-import TodoItem from "./TodoItem";
+import { useSelector } from 'react-redux';
+import TodoItem from './TodoItem';
 
 export default function TodoList({ isDone }) {
-  return (
-    <section>
-      <h2>Working...</h2>
-      <ul>
-        <TodoItem />
-      </ul>
-    </section>
-  );
+    const todos = useSelector((state) => state.todos.todos.filter((todo) => todo.completed === isDone));
+    return (
+        <section>
+            <h2>{isDone ? 'Done' : 'Working...'}</h2>
+            <ul>
+                {todos.map((todo) => (
+                    <TodoItem key={todo.id} todo={todo} />
+                ))}
+            </ul>
+        </section>
+    );
 }
