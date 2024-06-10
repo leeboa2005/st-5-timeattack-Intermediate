@@ -23,7 +23,7 @@ export default function TodoItem({ todo }) {
                 <p>내용: {todo.content}</p>
             </section>
             <section>
-                <button onClick={() => dispatch(toggleTodo(todo.id))}>완료</button>
+                <button onClick={() => dispatch(toggleTodo(todo.id))}>{todo.completed ? '취소' : '완료'}</button>
                 <button onClick={() => dispatch(deleteTodo(todo.id))}>삭제</button>
             </section>
         </li>
